@@ -7,13 +7,13 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity" android:id="@+id/container">
     <TextView
-            android:text="TextView"
+            android:text="000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewPoints"
             android:layout_gravity="left"
 
-    />
+            android:textColor="@color/purple_200"/>
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
