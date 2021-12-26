@@ -1,5 +1,6 @@
 package de.hgs.kissthefrog;
 
+import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-
         setContentView(R.layout.activity_main);
+        newGame();
+        showStartFragment();
     }
 
     private void newGame(){
@@ -42,5 +43,16 @@ public class MainActivity extends AppCompatActivity {
         fillTextView(R.id.textViewPoints,Integer.toString(points));
         fillTextView(R.id.textViewRounds,Integer.toString(round));
         fillTextView(R.id.textViewCountdown,Integer.toString(countdown*1000));
+    }
+
+    private void showStartFragment(){
+        ViewGroup container = (ViewGroup) findViewById(R.id.container);
+        container.removeAllViews();
+        container.addView(getLayoutInflater().inflate(R.layout.fragment_start,null));
+    }
+
+    private void showGameOverFragment(){
+        ViewGroup container = (ViewGroup) findViewById(R.id.container);
+        container.addView(getLayoutInflater().inflate(R.layout.fragment_gameover,null));
     }
 }
