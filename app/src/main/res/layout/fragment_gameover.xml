@@ -17,5 +17,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvTitle"/>
+    <TextView
+            android:textColor="@color/points"
+            android:text="Play Again"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/tvPlayAgain"/>
 
 </LinearLayout>

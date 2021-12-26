@@ -1,12 +1,14 @@
 package de.hgs.kissthefrog;
 
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatDelegate;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private int points;
     private int round;
@@ -18,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         setContentView(R.layout.activity_main);
-        newGame();
         showStartFragment();
     }
 
@@ -49,10 +50,31 @@ public class MainActivity extends AppCompatActivity {
         ViewGroup container = (ViewGroup) findViewById(R.id.container);
         container.removeAllViews();
         container.addView(getLayoutInflater().inflate(R.layout.fragment_start,null));
+        container.findViewById(R.id.tvStart).setOnClickListener(this);
+
     }
 
     private void showGameOverFragment(){
         ViewGroup container = (ViewGroup) findViewById(R.id.container);
         container.addView(getLayoutInflater().inflate(R.layout.fragment_gameover,null));
+        container.findViewById(R.id.tvPlayAgain).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.tvStart){
+            //startGame();
+
+            showGameOverFragment();
+            Toast.makeText(this,"Start",Toast.LENGTH_SHORT).show();
+        }
+        else if(v.getId() == R.id.tvPlayAgain){
+            showStartFragment();
+            //Toast.makeText(this,"Play Again",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void startGame() {
+        newGame();
     }
 }
