@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import java.util.Random;
 
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Runnable runnable = new Runnable() {
@@ -44,9 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         setContentView(R.layout.activity_main);
 
-        tvPoints = findViewById(R.id.textViewPoints);
-        tvRound = findViewById(R.id.textViewRounds);
-        tvCountdown = findViewById(R.id.textViewCountdown);
+        tvPoints = findViewById(R.id.points);
+        tvRound = findViewById(R.id.round);
+        tvCountdown = findViewById(R.id.countdown);
 
         showStartFragment();
     }
@@ -62,10 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ViewGroup container = (ViewGroup) findViewById(R.id.container);
         container.removeAllViews();
-        WimmelView wv = new WimmelView(this);
+        WimmelView wv = new WimmelView(getApplicationContext());
         container.addView(wv, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         wv.setImageCount(8*(10+round));
-
 
         frog = new ImageView(this);
         frog.setId(FROG_ID);
