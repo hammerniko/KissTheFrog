@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         setContentView(R.layout.activity_main);
         showStartFragment();
@@ -31,13 +30,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initRound() {
         countdown = 10;
+        ViewGroup container = (ViewGroup) findViewById(R.id.container);
+        container.removeAllViews();
+        WimmelView wv = new WimmelView(this);
+        container.addView(wv, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        wv.setImageCount(8*(10+round));
         update();
     }
 
     private void fillTextView(int id, String text){
         TextView tv = (TextView) findViewById(id);
         tv.setText(text);
-
     }
 
     private void update(){
@@ -63,9 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.tvStart){
-            //startGame();
-
-            showGameOverFragment();
+            startGame();
             Toast.makeText(this,"Start",Toast.LENGTH_SHORT).show();
         }
         else if(v.getId() == R.id.tvPlayAgain){
