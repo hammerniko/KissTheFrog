@@ -2,4 +2,5 @@
     <string name="app_name">KissTheFrog</string>
     <string name="kiss_the_frog">Kiss The Frog</string>
     <string name="start">Start</string>
+    <string name="kissed">kissed</string>
 </resources>
