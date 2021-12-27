@@ -25,6 +25,7 @@ public class WimmelView extends View {
 
     public WimmelView(Context context) {
         super(context);
+        paint = new Paint();
         paint.setAntiAlias(true);
     }
 

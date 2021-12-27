@@ -14,11 +14,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int round;
     private int countdown;
 
+    private TextView tvPoints;
+    private TextView tvRound;
+    private TextView tvCountdown;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         setContentView(R.layout.activity_main);
+
+        tvPoints = findViewById(R.id.textViewPoints);
+        tvRound = findViewById(R.id.textViewRounds);
+        tvCountdown = findViewById(R.id.textViewCountdown);
+
         showStartFragment();
     }
 
@@ -38,15 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         update();
     }
 
-    private void fillTextView(int id, String text){
-        TextView tv = (TextView) findViewById(id);
-        tv.setText(text);
-    }
+
 
     private void update(){
-        fillTextView(R.id.textViewPoints,Integer.toString(points));
-        fillTextView(R.id.textViewRounds,Integer.toString(round));
-        fillTextView(R.id.textViewCountdown,Integer.toString(countdown*1000));
+        tvPoints.setText(Integer.toString(points));
+        tvRound.setText(Integer.toString(round));
+        tvCountdown.setText(Integer.toString(countdown));
     }
 
     private void showStartFragment(){
@@ -67,15 +73,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.tvStart){
             startGame();
-            Toast.makeText(this,"Start",Toast.LENGTH_SHORT).show();
         }
         else if(v.getId() == R.id.tvPlayAgain){
             showStartFragment();
-            //Toast.makeText(this,"Play Again",Toast.LENGTH_SHORT).show();
-        }
+         }
     }
 
     private void startGame() {
+
         newGame();
     }
 }
